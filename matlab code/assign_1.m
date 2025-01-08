@@ -5,7 +5,7 @@ k = 0:0.01:1;  %this is the time interval of measurement of the output
 y = sin(2 * pi * k);
 
 % Set the noise variance (σ^2) and generate noise
-sigma2 = 0.2; % Adjust this value as needed
+sigma2 = 0.09; % Adjust this value as needed
 noise = sqrt(sigma2) * randn(size(k)); % Gaussian noise with mean 0 and variance σ^2
 
 % Add noise to the sine values
@@ -19,7 +19,7 @@ dataset_clean = [X,Y_clean];  % use to evaluate
 dataset = [X,Y];
 
 %model parameters 
-M =3;
+M =7;
 eta = 0.3;
 Liter = 3000;
 L = length(X);
