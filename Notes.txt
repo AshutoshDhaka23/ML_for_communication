@@ -1,0 +1,218 @@
+General Objective
+The assignment focuses on signal equalization techniques in communication systems, with particular emphasis on linear and nonlinear equalization. In optical communication, signal distortion and noise are critical issues due to various impairments like chromatic dispersion, nonlinearities, and noise in fiber optics. This assignment aims to implement and evaluate different equalization strategies, including adaptive methods and neural networks, to combat these impairments.
+
+Exercise 1: Linear Equalization (15%)
+Goal: To implement a linear discrete-time communication system and evaluate the effectiveness of a linear adaptive equalizer in mitigating distortions.
+
+Tasks:
+
+Generate and plot data sequence 
+𝑥
+[
+𝑘
+]
+x[k]:
+
+A sequence of 
+±
+1
+±1 symbols sampled from a uniform distribution.
+Plot it to visualize the input data.
+Convolution with the channel response:
+
+Use a raised cosine filter 
+ℎ
+[
+𝑘
+]
+h[k] to simulate a communication channel.
+Perform convolution 
+𝑦
+[
+𝑘
+]
+=
+ℎ
+[
+𝑘
+]
+∗
+𝑥
+[
+𝑘
+]
++
+𝑛
+[
+𝑘
+]
+y[k]=h[k]∗x[k]+n[k], adding Gaussian noise 
+𝑛
+[
+𝑘
+]
+n[k].
+Plot the output of the channel and explain how convolution causes inter-symbol interference (ISI) by spreading energy between symbols.
+Linear adaptive equalizer:
+
+Implement an adaptive filter with 
+𝑀
+=
+11
+M=11 taps, learning weights using gradient descent.
+Introduce a delay 
+𝐷
+D to align the received symbols correctly due to the channel's group delay.
+Plot error squared:
+
+𝑒
+2
+[
+𝑘
+]
+e 
+2
+ [k] shows the convergence of the equalizer's learning process over 500 iterations.
+Observe how the error reduces, indicating the equalizer's adaptation.
+Validate equalizer's performance:
+
+After convergence, show that the output resembles the input 
+𝑥
+[
+𝑘
+]
+x[k], proving the equalizer reduces distortion.
+Error rate analysis:
+
+Count errors between the equalized and original signals, showing that error rates decrease as equalization improves.
+Experiment with higher noise (
+𝜎
+2
+σ 
+2
+ ) and distortion (
+𝑊
+W) to study robustness.
+Purpose in Optical Communication: This models how linear equalization can compensate for chromatic dispersion and linear impairments in fiber optics.
+
+Exercise 2: Neural Network for Function Approximation (25%)
+Goal: To demonstrate that a single-layer neural network can approximate various nonlinear functions, showcasing the modeling capabilities of neural networks.
+
+Tasks:
+
+Implement a single-layer neural network with:
+
+One hidden layer, tanh activation, biases, and weights updated using gradient descent.
+Train on 
+𝑓
+(
+𝑥
+)
+=
+𝑥
+2
+,
+𝑥
+3
+,
+sin
+⁡
+(
+𝑥
+)
+,
+∣
+𝑥
+∣
+f(x)=x 
+2
+ ,x 
+3
+ ,sin(x),∣x∣ using sampled data.
+Optimize hyperparameters:
+
+Number of hidden nodes, learning rate, weight initialization, and variance.
+Generate plots:
+
+Show how well the network fits the functions on test data.
+Plot mean squared error (MSE) over iterations to show training progress.
+Analyze failure cases:
+
+Find scenarios where MSE converges but the network fails to approximate the function. Identify issues like poor initialization or insufficient model capacity.
+Purpose in Optical Communication: Neural networks can approximate complex nonlinear impairments in fiber optics, such as nonlinear phase noise and self-phase modulation.
+
+Exercise 3: Nonlinear Equalization (35%)
+Goal: To implement a nonlinear communication channel and evaluate a neural network-based nonlinear equalizer.
+
+Tasks:
+
+Nonlinear channel generation:
+
+Simulate a nonlinear channel output 
+𝑦
+[
+𝑘
+]
+=
+ℎ
+[
+𝑘
+]
+∗
+𝑥
+[
+𝑘
+]
++
+𝑎
+(
+ℎ
+[
+𝑘
+]
+∗
+𝑥
+[
+𝑘
+]
+)
+2
++
+𝑛
+[
+𝑘
+]
+y[k]=h[k]∗x[k]+a(h[k]∗x[k]) 
+2
+ +n[k] with 
+𝑎
+=
+0.8
+a=0.8.
+Plot the distorted signal.
+Nonlinear adaptive equalizer:
+
+Implement a multiple-input neural network equalizer with 
+𝑀
+=
+11
+M=11 taps and tanh activation.
+Update weights using gradient descent, with proper weight initialization to avoid local minima.
+Error analysis:
+
+Compare the performance of the nonlinear equalizer with a linear equalizer by measuring error rates.
+Experiment with different neural network configurations (hidden nodes, learning rates, initialization) to optimize performance.
+Purpose in Optical Communication: This models how nonlinear equalizers can mitigate fiber nonlinearities such as self-phase modulation and cross-phase modulation.
+
+Exercise 4: Convolutional Nonlinear Equalizer (25%)
+Goal: To implement a convolutional nonlinear equalizer and evaluate its performance.
+
+Tasks:
+
+Use the nonlinear channel from Exercise 3.
+Implement a convolutional structure to handle nonlinear distortions.
+Compare performance with the previously implemented nonlinear equalizer.
+Purpose in Optical Communication: Convolutional architectures are powerful for real-time equalization in high-speed optical communication, where both linear and nonlinear impairments coexist.
+
+Key Takeaway
+The overall goal of the assignment is to simulate and address signal impairments through equalization techniques. In optical communication, this translates to mitigating distortions like chromatic dispersion, nonlinearities, and noise, ensuring robust and high-quality data transmission. Each exercise builds foundational skills in adaptive signal processing and machine learning applied to communication systems.
